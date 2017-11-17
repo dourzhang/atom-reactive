@@ -1,4 +1,4 @@
-package com.watent.reactive.function.cfg;//package com.watent.reactive.service;
+package com.watent.reactive.annotation;//package com.watent.reactive.service;
 
 import com.watent.reactive.bean.User;
 import org.springframework.boot.context.config.ResourceNotFoundException;
@@ -27,9 +27,9 @@ public class UserService {
                 .switchIfEmpty(Mono.error(new ResourceNotFoundException(id, null)));
     }
 
-    public Flux<User> createOrUpdate(final Flux<User> users) {
-//        Flux<User> userFlux = users.doOnNext(user -> this.data.put(user.getId(), user));
-        return users;
+    public Mono<User> createOrUpdate(final Mono<User> users) {
+        Mono<User> userFlux = users.doOnNext(user -> this.data.put(user.getId(), user));
+        return userFlux;
     }
 
     public Mono<User> createOrUpdate(final User user) {

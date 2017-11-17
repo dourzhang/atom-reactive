@@ -10,7 +10,7 @@ import reactor.ipc.netty.http.client.HttpClientOptions;
 
 import java.util.function.Consumer;
 
-public class CalculatorTest {
+public class FunctionTest {
 
     @Test
     public void calculator() {
